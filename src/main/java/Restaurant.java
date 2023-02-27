@@ -75,5 +75,14 @@ public class Restaurant {
     public String getName() {
         return name;
     }
-
+    
+    public Integer orderTotalValue(List<String> itemsAdded) throws itemNotFoundException {
+        int totalPrice=0;
+        for (String items: itemsAdded){
+            //findItemByName is taking care of finding the item with name and returning the full Item Object
+            Item itemVal=findItemByName(items);
+            totalPrice=itemVal.getPrice()+totalPrice;
+        }
+        return totalPrice;
+    }
 }

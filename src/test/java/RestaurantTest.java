@@ -4,6 +4,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Spy;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.time.LocalTime;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -69,5 +71,35 @@ class RestaurantTest {
 
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    @Test
+    public void return_order_value_when_menu_items_selected() throws itemNotFoundException{
+        List<String> itemsAdded = new ArrayList<String>();
+        //This add in list is just for string that will be passed to the method/function
+        //The returned value is an int of total
+        //Items will always be found with price
+        itemsAdded.add(0,"Sweet corn soup");
+        assertEquals(119, restaurant.orderTotalValue(itemsAdded));
+    }
+    
+    @Test
+    public void validate_amount_returned_is_not_null() throws itemNotFoundException{
+        List<String> itemsAdded = new ArrayList<String>();
+        //This add in list is just for string that will be passed to the method/function
+        //The returned value is an int of total
+        //Items will always be found with price
+        itemsAdded.add(0,"Sweet corn soup");
+        assertNotNull(restaurant.orderTotalValue(itemsAdded));      
+    }
+
+    @Test
+    public void validate_total_amount_is_not_zero() throws itemNotFoundException{
+        List<String> itemsAdded = new ArrayList<String>();
+        //This add in list is just for string that will be passed to the method/function
+        //The returned value is an int of total
+        //Items will always be found with price
+        itemsAdded.add(0,"Sweet corn soup");
+        assertNotEquals(0, restaurant.orderTotalValue(itemsAdded));  
+
+    }
 
 }
